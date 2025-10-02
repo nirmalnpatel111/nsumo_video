@@ -10,18 +10,18 @@
 
 // clang-format off
 typedef enum {
-    IO_10, IO_11, IO_12, IO_13, IO_14, IO_15, IO_16, IO_17,
+    IO_10, IO_11, IO_12, IO_13, IO_14, IO_15, IO_16, IO_17, //this is for the launchpad + the nsumo
     IO_20, IO_21, IO_22, IO_23, IO_24, IO_25, IO_26, IO_27,
 #if defined(NSUMO)
-    IO_30, IO_31, IO_32, IO_33, IO_34, IO_35, IO_36, IO_37,
+    IO_30, IO_31, IO_32, IO_33, IO_34, IO_35, IO_36, IO_37, //nsumo is the custom pcb by the guy
 #endif
 } io_generic_e;
-// clang-format on
+// clang-format onf
 
 typedef enum
 {
 #if defined(LAUNCHPAD) // Launchpad (MSP430G2553IN20)
-    IO_TEST_LED = IO_10,
+    IO_TEST_LED = IO_10, //mapping the hardware means motors and stuff to the pins
     IO_UART_RXD = IO_11,
     IO_UART_TXD = IO_12,
     IO_LINE_DETECT_FRONT_LEFT = IO_13,
@@ -67,15 +67,15 @@ typedef enum
 
 typedef enum
 {
-    IO_SELECT_GPIO,
-    IO_SELECT_ALT1,
-    IO_SELECT_ALT2,
-    IO_SELECT_ALT3,
+    IO_SELECT_GPIO, // for the io
+    IO_SELECT_ALT1, // for the special function 1
+    IO_SELECT_ALT2, // special function 2
+    IO_SELECT_ALT3, // special function 3 // all of these would be used later to access the registers
 } io_select_e;
 
 typedef enum
 {
-    IO_DIR_INPUT,
+    IO_DIR_INPUT, 
     IO_DIR_OUTPUT,
 } io_dir_e;
 
@@ -111,12 +111,12 @@ struct io_config
     io_out_e out;
 };
 
-void io_init(void);
-void io_configure(io_e io, const struct io_config *config);
-void io_get_current_config(io_e io, struct io_config *current_config);
-bool io_config_compare(const struct io_config *cfg1, const struct io_config *cfg2);
-void io_set_select(io_e io, io_select_e select);
-void io_set_direction(io_e io, io_dir_e direction);
+void io_init(void); //io init
+void io_configure(io_e io, const struct io_config *config); // for the complete configuration of one pin
+void io_get_current_config(io_e io, struct io_config *current_config); //to get the current config of a pin
+bool io_config_compare(const struct io_config *cfg1, const struct io_config *cfg2); //comparing 2 pin's config
+void io_set_select(io_e io, io_select_e select); //now setting the values into the registers
+void io_set_direction(io_e io, io_dir_e direction); //changing stuff dynamically
 void io_set_resistor(io_e io, io_resistor_e resistor);
 void io_set_out(io_e io, io_out_e out);
 io_in_e io_get_input(io_e io);
