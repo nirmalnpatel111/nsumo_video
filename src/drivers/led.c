@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 static const struct io_config led_config = {
-    .select = IO_SELECT_GPIO,     //normal gpio, no uart, usart           //basically a struct, the definition of io_config whould be somewhere is the io.h. and they are assiged to some value. the initialization way is a specific called designated initializer.
+    .select = IO_SELECT_GPIO,     //normal gpio, no uart, usart           //basically a struct, the definition of io_config whould be somewhere is the io.h. and they are assiged to some value. the initialization way is a specific called designated initializer. learn more: https://chatgpt.com/share/68deaa12-95fc-800e-ba04-e1c7b24475b3
     .resistor = IO_RESISTOR_DISABLED, //no pullup or pulldown resistor needed    
     .dir = IO_DIR_OUTPUT, //set to output gpio
     .out = IO_OUT_LOW, //start with off mode
