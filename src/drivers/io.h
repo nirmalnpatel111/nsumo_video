@@ -119,13 +119,13 @@ void io_set_select(io_e io, io_select_e select); //now setting the values into t
 void io_set_direction(io_e io, io_dir_e direction); //changing stuff dynamically
 void io_set_resistor(io_e io, io_resistor_e resistor);
 void io_set_out(io_e io, io_out_e out);
-io_in_e io_get_input(io_e io);
+io_in_e io_get_input(io_e io); //to get the input
 const io_e *io_adc_pins(uint8_t *cnt);
 uint8_t io_to_adc_idx(io_e io);
 
 typedef void (*isr_function)(void);
-void io_configure_interrupt(io_e io, io_trigger_e trigger, isr_function isr);
-void io_deconfigure_interrupt(io_e io);
+void io_configure_interrupt(io_e io, io_trigger_e trigger, isr_function isr); //related to interrupts, not used now
+void io_deconfigure_interrupt(io_e io); 
 void io_enable_interrupt(io_e io);
 void io_disable_interrupt(io_e io);
 
